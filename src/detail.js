@@ -15,6 +15,7 @@ export default class Detail extends Component {
         const yeniOlu = getParam('yeniOlu');
         const yeniIyi = getParam('yeniIyi');
         const topIyi = getParam('topIyi');
+        const date= new Date();
         return (
         <View style={styles.detailContainer} >
             <Image            
@@ -30,8 +31,11 @@ export default class Detail extends Component {
                     <Text style={styles.text}>Bugün İyileşen Sayısı  (New Recovered):  {yeniIyi}</Text>
                     <Text style={styles.text}>Toplam İyileşen Sayısı  (Total Recovered):  {topIyi}</Text>
                     
+                    
             </View>
+            <Text style={styles.date}>{date.toDateString()}</Text>
         </View>
+         
         )
     }
 }
@@ -39,14 +43,14 @@ const styles=StyleSheet.create({
     detailContainer:{
         flex:1,
         alignItems:'center',
-        justifyContent:'center',
+        justifyContent:'center'
     },
     image:{
         position:'absolute',
         resizeMode:'stretch',        
         width:'100%',
         height:'100%',
-        opacity:0.4,
+        opacity:0.7,
     },
     detail:{       
         flexDirection:'column',
@@ -54,12 +58,14 @@ const styles=StyleSheet.create({
         backgroundColor:'white',
         paddingHorizontal:2,
         marginHorizontal:2,
-        opacity:0.8,
-        borderRadius:5,
-        borderColor:'grey',
-        borderWidth:2
+        opacity:0.9,
+        borderRadius:10,
+        borderColor:'tomato',
+        borderWidth:2,
+        marginVertical:'20%'
     },
     text:{
+        paddingVertical:4,
         color:'black',
         fontSize:15,
         fontWeight:'bold',
@@ -69,6 +75,17 @@ const styles=StyleSheet.create({
         width:128,
         height:128,
         position:'absolute'
+    },
+    date:{
+        flexDirection:'row-reverse',
+        alignItems:'flex-end',
+        justifyContent:'flex-end',
+        fontSize:22,
+        fontWeight:'bold',
+        color:'black',
+        backgroundColor:'white',
+        borderRadius:5
+        
     }
   
 })

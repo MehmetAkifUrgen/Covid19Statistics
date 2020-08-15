@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import { Text,TextInput, View ,StyleSheet,FlatList,Image,TouchableOpacity,ActivityIndicator} from 'react-native'
 import axios from 'axios';
 
+
 export default class Home extends Component {
 
   state={
@@ -49,8 +50,7 @@ export default class Home extends Component {
           <Text style={styles.name}>
             {item.Country} {item.CountryCode}
           </Text>
-          <Text style={{fontSize:16}}>Toplam Vaka : {item.TotalConfirmed}</Text>
-          <Text style={{fontSize:14}}>Toplam Ölüm : {item.TotalDeaths}</Text>
+          
         </View>
       </TouchableOpacity>
     );
@@ -144,6 +144,8 @@ const styles=StyleSheet.create({
   },
   name: {
     fontSize: 16,
+    color:'black',
+    fontWeight:'500'
   },
   searchContainer: {
     padding: 10,
