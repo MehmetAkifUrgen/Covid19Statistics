@@ -33,7 +33,7 @@ export default class Detail extends Component {
                     <View style={styles.todayDetail}>
                         <Text style={styles.textGun}>TODAY</Text>
                         <Text style={styles.text}>Confirmed: {yeniVaka}</Text>
-                        <Text style={styles.text}>Deaths: {yeniOlu}</Text>
+                        <Text style={styles.text}>Deathss: {yeniOlu}</Text>
                         <Text style={styles.text}>Recovered :{yeniIyi}</Text>
                     </View>
                     <Image style={styles.alert} source={require('../assets/alert.png')}></Image>
