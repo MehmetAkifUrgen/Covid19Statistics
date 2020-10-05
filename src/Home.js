@@ -1,5 +1,9 @@
 import React, { Component } from 'react'
+<<<<<<< HEAD
 import { Text,TextInput, View ,StyleSheet,FlatList,Image,TouchableOpacity,ActivityIndicator,StatusBar, SnapshotViewIOS} from 'react-native'
+=======
+import { Text,TextInput, View ,StyleSheet,FlatList,Image,TouchableOpacity,ActivityIndicator} from 'react-native'
+>>>>>>> c18df8a084cc3ec8aa722466a54e947f202c10fb
 import axios from 'axios';
 
 
@@ -13,6 +17,7 @@ export default class Home extends Component {
   };
   componentDidMount(){
     this.getCountry();
+<<<<<<< HEAD
     this.renderFooter();
   }
 
@@ -31,6 +36,20 @@ export default class Home extends Component {
     
   }
   renderContactsItem = ({item, index}) => { 
+=======
+  }
+  
+  getCountry =async () =>{
+    const {data : {Countries:country}} = await axios.get('https://api.covid19api.com/summary');
+    this.setState({
+      country,
+      allCountry:country,
+      loading:true
+    })
+    
+  }
+  renderContactsItem = ({item, index}) => {
+>>>>>>> c18df8a084cc3ec8aa722466a54e947f202c10fb
     const { navigate , push, goBack} = this.props.navigation
     const ulke= item.Country
     const kodu= item.CountryCode
@@ -40,6 +59,7 @@ export default class Home extends Component {
     const yeniOlu=item.NewDeaths
     const yeniIyi=item.NewRecovered
     const topIyi=item.TotalRecovered
+<<<<<<< HEAD
     const oluOrani=olu/topVaka
     const tarih=item.Date
     return (
@@ -62,11 +82,31 @@ export default class Home extends Component {
           </Text>
           <Text style={styles.oluOrani}>
           Death Rate: %{(oluOrani*100).toFixed(2)}
+=======
+    return (
+      <TouchableOpacity
+        onPress={() => push('Detail' , {
+            ulke,kodu,olu,yeniVaka,topVaka,yeniOlu,yeniIyi,topIyi
+        }) }
+        style={[
+          styles.itemContainer,
+          /*{backgroundColor: index % 2 === 1 ? '#fafafa' : ''}*/,
+        ]}>
+        <Image 
+            style={{width:100,height:64,borderRadius:32}}
+            source={{uri:`http://flag.muratoner.net/?country=${item.CountryCode}`}}/>
+        <View style={styles.textContainer}>
+          <Text style={styles.name}>
+            {item.Country} {item.CountryCode}
+>>>>>>> c18df8a084cc3ec8aa722466a54e947f202c10fb
           </Text>
           
         </View>
       </TouchableOpacity>
+<<<<<<< HEAD
      
+=======
+>>>>>>> c18df8a084cc3ec8aa722466a54e947f202c10fb
     );
   };
 
@@ -81,7 +121,31 @@ export default class Home extends Component {
       country: newData,
     });
   };
+<<<<<<< HEAD
   
+=======
+  renderHeader = () => {
+    const {text} = this.state;
+    return (
+    <View style={styles.container}>
+      <View style={styles.searchContainer}>
+        <TextInput
+          onChangeText={(text) => {
+            this.setState({
+              text,
+            });
+
+            this.searchFilter(text);
+          }}
+          value={text}
+          placeholder="Search..."
+          style={styles.searchInput}
+        />
+      </View>
+    </View>
+    );
+  };
+>>>>>>> c18df8a084cc3ec8aa722466a54e947f202c10fb
 
   renderFooter = () => {
 		if (!this.state.loading){
@@ -95,6 +159,7 @@ export default class Home extends Component {
 	};
   
   render() {
+<<<<<<< HEAD
     const {text} = this.state;
     return (
       
@@ -128,6 +193,17 @@ export default class Home extends Component {
           refreshing={true}
           data={this.state.country}
           
+=======
+   
+    return (
+    <View style={styles.container}>
+        <FlatList
+          ListHeaderComponent={this.renderHeader}
+          ListFooterComponent={this.renderFooter}
+          renderItem={this.renderContactsItem}
+          keyExtractor={item => item.Slug}
+          data={this.state.country}
+>>>>>>> c18df8a084cc3ec8aa722466a54e947f202c10fb
         />
     </View>
     )
@@ -135,6 +211,7 @@ export default class Home extends Component {
 }
 const styles=StyleSheet.create({
   container:{
+<<<<<<< HEAD
     backgroundColor:'#14171A',
     flex:1,  
   },
@@ -154,11 +231,35 @@ const styles=StyleSheet.create({
       
   },
   
+=======
+    backgroundColor:'#341d56',
+    flex:1
+  },
+
+  itemContainer: {
+    flex: 1,
+    borderRadius:20,
+    flexDirection: 'row',
+    paddingVertical:10,
+    marginHorizontal:10,
+    borderWidth: 2,
+    paddingHorizontal:10,
+    borderColor:'grey',
+    backgroundColor:'#d6d6d6',  
+  },
+  avatar: {
+    width: 50,
+    height: 50,
+    borderRadius: 25,
+    marginHorizontal: 10,
+  },
+>>>>>>> c18df8a084cc3ec8aa722466a54e947f202c10fb
   textContainer: {
     justifyContent: 'space-around',
     marginHorizontal:20
   },
   name: {
+<<<<<<< HEAD
     textAlign:'center',
     fontSize: 16,
     color:'#1DA1F2',
@@ -187,6 +288,23 @@ const styles=StyleSheet.create({
     color:'#F4B400',
     fontWeight:'500',
     fontFamily:'SansitaSwashed-Light'
+=======
+    fontSize: 16,
+    color:'black',
+    fontWeight:'500'
+  },
+  searchContainer: {
+    padding: 10,
+    fontSize:16,
+  },
+  searchInput: { 
+    fontSize: 16,
+    backgroundColor: '#d6d6d6',
+    padding: 10,
+    borderWidth:2,
+    borderRadius:10,
+    borderColor:'grey'
+>>>>>>> c18df8a084cc3ec8aa722466a54e947f202c10fb
   }
 
 });

@@ -38,7 +38,11 @@
 		</dict>
 	</dict>
 	<key>NSLocationWhenInUseUsageDescription</key>
+<<<<<<< HEAD
 	<string/>
+=======
+	<string></string>
+>>>>>>> c18df8a084cc3ec8aa722466a54e947f202c10fb
 	<key>UILaunchStoryboardName</key>
 	<string>LaunchScreen</string>
 	<key>UIRequiredDeviceCapabilities</key>
@@ -53,6 +57,7 @@
 	</array>
 	<key>UIViewControllerBasedStatusBarAppearance</key>
 	<false/>
+<<<<<<< HEAD
 	<key>UIAppFonts</key>
 	<array>
 		<string>SansitaSwashed-VariableFont_wght.ttf</string>
@@ -65,5 +70,7 @@
 		<string>SansitaSwashed-SemiBold.ttf</string>
 		<string>ArchitectsDaughter-Regular.ttf</string>
 	</array>
+=======
+>>>>>>> c18df8a084cc3ec8aa722466a54e947f202c10fb
 </dict>
 </plist>

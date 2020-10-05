@@ -1,9 +1,12 @@
 package com.covid19;
 
 import com.facebook.react.ReactActivity;
+<<<<<<< HEAD
 import com.facebook.react.ReactActivityDelegate;
 import com.facebook.react.ReactRootView;
 import com.swmansion.gesturehandler.react.RNGestureHandlerEnabledRootView;
+=======
+>>>>>>> c18df8a084cc3ec8aa722466a54e947f202c10fb
 
 public class MainActivity extends ReactActivity {
 
@@ -15,6 +18,7 @@ public class MainActivity extends ReactActivity {
   protected String getMainComponentName() {
     return "Covid19";
   }
+<<<<<<< HEAD
   @Override
   protected ReactActivityDelegate createReactActivityDelegate() {
   return new ReactActivityDelegate(this, getMainComponentName()) {
@@ -24,4 +28,6 @@ public class MainActivity extends ReactActivity {
      }
    };
  }
+=======
+>>>>>>> c18df8a084cc3ec8aa722466a54e947f202c10fb
 }
