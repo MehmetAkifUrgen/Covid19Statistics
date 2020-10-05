@@ -2,6 +2,7 @@ apply plugin: "com.android.application"
 
 import com.android.build.OutputFile
 
+
 /**
  * The react.gradle file registers a task for each build variant (e.g. bundleDebugJsAndAssets
  * and bundleReleaseJsAndAssets).
@@ -150,7 +151,6 @@ android {
             keyAlias 'androiddebugkey'
             keyPassword 'android'
         }
-<<<<<<< HEAD
         release {
             if (project.hasProperty('MYAPP_UPLOAD_STORE_FILE')) {
                 storeFile file(MYAPP_UPLOAD_STORE_FILE)
@@ -159,8 +159,6 @@ android {
                 keyPassword MYAPP_UPLOAD_KEY_PASSWORD
             }
         }
-=======
->>>>>>> c18df8a084cc3ec8aa722466a54e947f202c10fb
     }
     buildTypes {
         debug {
@@ -172,10 +170,7 @@ android {
             signingConfig signingConfigs.debug
             minifyEnabled enableProguardInReleaseBuilds
             proguardFiles getDefaultProguardFile("proguard-android.txt"), "proguard-rules.pro"
-<<<<<<< HEAD
             signingConfig signingConfigs.release
-=======
->>>>>>> c18df8a084cc3ec8aa722466a54e947f202c10fb
         }
     }
 
