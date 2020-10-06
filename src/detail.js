@@ -23,8 +23,8 @@ export default class Detail extends Component {
             
         <View style={styles.detailContainer} >
             <StatusBar backgroundColor='#14171A' barStyle='light-content' ></StatusBar>
-            <View resizeMode="stretch" style={styles.imageView }>
-                <Image     style={styles.image }         
+            <View  style={styles.imageView }>
+                <Image resizeMode="stretch"    style={styles.image }         
                      source={{uri:`https://flag.muratoner.net/?country=${kodu}&width=720&height=1280&quality=100`}}></Image>
                 <Text style={styles.textCountry}> | {ulke}-{kodu} |</Text>
                 
