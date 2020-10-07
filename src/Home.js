@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { Text,TextInput, View ,StyleSheet,FlatList,Image,TouchableOpacity,ActivityIndicator,StatusBar, SnapshotViewIOS} from 'react-native'
 import axios from 'axios';
-
+import SplashScreen from 'react-native-splash-screen'
 
 export default class Home extends Component {
 
@@ -12,8 +12,10 @@ export default class Home extends Component {
     allCountry:[]
   };
   componentDidMount(){
+    SplashScreen.hide();
     this.getCountry();
     this.renderFooter();
+    
   }
 
 
