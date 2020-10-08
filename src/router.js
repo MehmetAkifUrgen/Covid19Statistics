@@ -16,7 +16,13 @@ const appNavigator = createStackNavigator({
     Detail : {
         screen:Detail,
         navigationOptions:{
-            headerShown:false
+            headerTitle:'',
+            headerPressColorAndroid:'white',
+            headerTintColor:'white',
+            headerStyle:{
+                backgroundColor:'#14171A',
+                
+            }
         }
     },
 },{

@@ -2,6 +2,9 @@ import React, { Component } from 'react'
 import { Text,TextInput, View ,StyleSheet,FlatList,Image,TouchableOpacity,ActivityIndicator,StatusBar, SnapshotViewIOS} from 'react-native'
 import axios from 'axios';
 import SplashScreen from 'react-native-splash-screen'
+import {
+  AdMobBanner
+} from 'react-native-admob'
 
 export default class Home extends Component {
 
@@ -14,8 +17,6 @@ export default class Home extends Component {
   componentDidMount(){
     SplashScreen.hide();
     this.getCountry();
-    this.renderFooter();
-    
   }
 
 
@@ -85,17 +86,7 @@ export default class Home extends Component {
   };
   
 
-  renderFooter = () => {
-		if (!this.state.loading){
-            return null;
-        } 
-		return(
-			<View>
-				<ActivityIndicator size="large" />
-			</View>
-		)
-	};
-  
+ 
   render() {
     const {text} = this.state;
     return (
@@ -131,6 +122,13 @@ export default class Home extends Component {
           data={this.state.country}
           
         />
+        
+				<AdMobBanner
+            adSize="fullBanner"
+            adUnitID="ca-app-pub-3940256099942544/6300978111"
+            testDevices={[AdMobBanner.simulatorId]}
+            onAdFailedToLoad={error => console.error(error)} />
+	
     </View>
     )
   }
