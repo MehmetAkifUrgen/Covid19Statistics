@@ -3,7 +3,7 @@ import { Text,TextInput, View ,StyleSheet,FlatList,Image,TouchableOpacity,Activi
 import axios from 'axios';
 import SplashScreen from 'react-native-splash-screen'
 import {
-  AdMobBanner
+  AdMobBanner,
 } from 'react-native-admob'
 
 export default class Home extends Component {
@@ -33,6 +33,9 @@ export default class Home extends Component {
     })
     
   }
+
+
+
   renderContactsItem = ({item, index}) => { 
     const { navigate , push, goBack} = this.props.navigation
     const ulke= item.Country
@@ -51,7 +54,7 @@ export default class Home extends Component {
         onPress={() => navigate('Detail' , {
             ulke,kodu,olu,yeniVaka,topVaka,yeniOlu,yeniIyi,topIyi,tarih
         })
-        
+      
       
        }
         style={styles.itemContainer}
@@ -122,13 +125,13 @@ export default class Home extends Component {
           data={this.state.country}
           
         />
-        
-				<AdMobBanner
+      
+				<AdMobBanner 
             adSize="fullBanner"
             adUnitID="ca-app-pub-7956816566156883/8015779755"
             
             onAdFailedToLoad={error => console.error(error)} />
-	
+    
     </View>
     )
   }

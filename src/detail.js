@@ -1,9 +1,22 @@
 import React, { Component } from 'react'
 import { Text, View,Image, StyleSheet ,StatusBar} from 'react-native'
-import { TouchableOpacity } from 'react-native-gesture-handler';
-import { color } from 'react-native-reanimated';
+
+import {
+    AdMobBanner,
+    AdMobInterstitial
+    
+  } from 'react-native-admob'
+
 
 export default class Detail extends Component {
+    
+    constructor(props) {
+        super(props);
+        AdMobInterstitial.setAdUnitID('ca-app-pub-7956816566156883/3073200997');
+        AdMobInterstitial.setTestDevices([AdMobInterstitial.simulatorId]);
+        AdMobInterstitial.requestAd().then(() => AdMobInterstitial.showAd());        
+      }
+        
     render() {
         const { navigate , push, goBack, getParam} = this.props.navigation
         
@@ -57,6 +70,15 @@ export default class Detail extends Component {
                 <Text style={{color:'#191414',fontSize:16, fontFamily:'SansitaSwashed-Medium'}}>Recovery Rate: %{(iyiOrani*100).toFixed(2)}</Text>
             </View>           
             <Text style={styles.date}>{date.toDateString()}</Text>
+
+           
+                <AdMobBanner
+                    adSize="fullBanner"
+                    adUnitID="ca-app-pub-7956816566156883/3260246717"
+                    
+                    onAdFailedToLoad={error => console.error(error)} />
+           
+
         </View>
          
         )
@@ -126,7 +148,7 @@ const styles=StyleSheet.create({
         textAlign:'center',      
         fontSize:22,
         color:'#B4944A',
-        marginVertical:'10%',
+        marginVertical:'5%',
         marginHorizontal:'20%',
         borderRadius:10,
         borderWidth:2,
