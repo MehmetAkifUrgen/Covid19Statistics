@@ -125,8 +125,8 @@ export default class Home extends Component {
         
 				<AdMobBanner
             adSize="fullBanner"
-            adUnitID="ca-app-pub-3940256099942544/6300978111"
-            testDevices={[AdMobBanner.simulatorId]}
+            adUnitID="ca-app-pub-7956816566156883/8015779755"
+            
             onAdFailedToLoad={error => console.error(error)} />
 	
     </View>
