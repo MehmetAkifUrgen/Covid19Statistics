@@ -1,0 +1,10 @@
+{
+  "devToolsPort": 19002,
+  "expoServerPort": 19000,
+  "packagerPort": 19001,
+  "packagerPid": 9500,
+  "expoServerNgrokUrl": "https://jf-ytp.urgenakif.covid19statistics.exp.direct",
+  "packagerNgrokUrl": "https://packager.jf-ytp.urgenakif.covid19statistics.exp.direct",
+  "ngrokPid": 7384,
+  "webpackServerPort": null
+}

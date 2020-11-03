@@ -1,10 +1,11 @@
 import React, { Component } from 'react'
-import { Text,TextInput, View ,StyleSheet,FlatList,Image,TouchableOpacity,ActivityIndicator,StatusBar, SnapshotViewIOS} from 'react-native'
+import { Text,TextInput, View ,StyleSheet,FlatList,Image,TouchableOpacity,StatusBar,ActivityIndicator} from 'react-native'
 import axios from 'axios';
-import SplashScreen from 'react-native-splash-screen'
+import * as SplashScreen from 'expo-splash-screen';
 import {
-  AdMobBanner,
-} from 'react-native-admob'
+  AdMobBanner
+} from 'expo-ads-admob';
+
 
 export default class Home extends Component {
 
@@ -15,10 +16,13 @@ export default class Home extends Component {
     allCountry:[]
   };
   componentDidMount(){
-    SplashScreen.hide();
+    SplashScreen.hideAsync();
+    
     this.getCountry();
   }
-
+  componentWillUnmount (){
+    this.getCountry();
+  }
 
   
   
@@ -34,7 +38,11 @@ export default class Home extends Component {
     
   }
 
-
+  loading  =  () =>{
+    return(
+      <ActivityIndicator size="large" color="red"></ActivityIndicator>
+    )
+  }
 
   renderContactsItem = ({item, index}) => { 
     const { navigate , push, goBack} = this.props.navigation
@@ -60,6 +68,8 @@ export default class Home extends Component {
         style={styles.itemContainer}
         >
         <Image resizeMode="stretch"
+            loadingIndicatorSource={require('../assets/alert.png')}
+            onLoad={this.loading}
             style={{width:120,height:70, borderRadius:10,borderColor:'grey'}}
             source={{uri:`https://flag.muratoner.net/?country=${item.CountryCode}`}}/>
         <View style={styles.textContainer}>
@@ -100,7 +110,7 @@ export default class Home extends Component {
             <View style={styles.searchContainer}>
             
             <TextInput
-              
+      
               onChangeText={(text) => {
                 this.setState({
                   text,
@@ -125,12 +135,13 @@ export default class Home extends Component {
           data={this.state.country}
           
         />
-      
-				<AdMobBanner 
-            adSize="fullBanner"
+        <AdMobBanner
+            bannerSize="fullBanner"
             adUnitID="ca-app-pub-7956816566156883/8015779755"
-            
-            onAdFailedToLoad={error => console.error(error)} />
+            servePersonalizedAds 
+            onDidFailToReceiveAdWithError={this.bannerError} />
+      
+			
     
     </View>
     )
@@ -166,7 +177,7 @@ const styles=StyleSheet.create({
     fontSize: 16,
     color:'#1DA1F2',
     fontWeight:'500',
-    fontFamily:'ArchitectsDaughter-Regular'
+    
   },
   searchContainer: {
     marginTop:10,
@@ -175,21 +186,21 @@ const styles=StyleSheet.create({
     fontSize:16,
   },
   searchInput: { 
-    
+    padding:10,
     fontSize: 16,
     backgroundColor: '#14171A',
     color:'white',
     borderWidth:2,
     borderRadius:10,
     borderColor:'grey',
-    fontFamily:'ArchitectsDaughter-Regular'
+    
   },
   oluOrani:{
     textAlign:'center',
     fontSize: 15,
     color:'#F4B400',
     fontWeight:'500',
-    fontFamily:'SansitaSwashed-Light'
+    
   }
 
 });

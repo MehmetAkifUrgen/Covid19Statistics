@@ -16,14 +16,9 @@ const appNavigator = createStackNavigator({
     Detail : {
         screen:Detail,
         navigationOptions:{
-            headerTitle:'',
-            headerPressColorAndroid:'white',
-            headerTintColor:'white',
-            headerStyle:{
-                backgroundColor:'#14171A',
-                
+                headerShown:false
             }
-        }
+        
     },
 },{
     initialRouteName:"Home"

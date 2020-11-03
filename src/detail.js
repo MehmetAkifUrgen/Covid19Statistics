@@ -1,22 +1,26 @@
 import React, { Component } from 'react'
-import { Text, View,Image, StyleSheet ,StatusBar} from 'react-native'
-
+import { Text, View,Image, StyleSheet ,StatusBar, ScrollView} from 'react-native'
 import {
     AdMobBanner,
     AdMobInterstitial
-    
-  } from 'react-native-admob'
+  } from 'expo-ads-admob';
+
+
 
 
 export default class Detail extends Component {
     
     constructor(props) {
         super(props);
-        AdMobInterstitial.setAdUnitID('ca-app-pub-7956816566156883/3073200997');
-        AdMobInterstitial.setTestDevices([AdMobInterstitial.simulatorId]);
-        AdMobInterstitial.requestAd().then(() => AdMobInterstitial.showAd());        
+        this.getAd();
       }
+    
+    getAd = async() =>{
+        await AdMobInterstitial.setAdUnitID('ca-app-pub-7956816566156883/3073200997');
+        await AdMobInterstitial.requestAdAsync({ servePersonalizedAds: true});
+        await AdMobInterstitial.showAdAsync();
         
+     }  
     render() {
         const { navigate , push, goBack, getParam} = this.props.navigation
         
@@ -36,8 +40,9 @@ export default class Detail extends Component {
             
         <View style={styles.detailContainer} >
             <StatusBar backgroundColor='#14171A' barStyle='light-content' ></StatusBar>
+            
             <View  style={styles.imageView }>
-                <Image resizeMode="stretch"    style={styles.image }         
+                <Image resizeMode="stretch"  defaultSource={require('../assets/covid.png')}   style={styles.image }         
                      source={{uri:`https://flag.muratoner.net/?country=${kodu}&width=720&height=1280&quality=100`}}></Image>
                 <Text style={styles.textCountry}> | {ulke}-{kodu} |</Text>
                 
@@ -62,23 +67,23 @@ export default class Detail extends Component {
                     
                     
             </View>
+           
             <View style={styles.olumOran}>
-                <Text style={{color:'#191414',fontSize:16, fontFamily:'SansitaSwashed-Medium'}}>Death Rate: %{(olumOrani*100).toFixed(2)}</Text>
+                <Text style={{color:'#191414',fontSize:16}}>Death Rate: %{(olumOrani*100).toFixed(2)}</Text>
                 
             </View>
             <View style={styles.iyiOran}>
-                <Text style={{color:'#191414',fontSize:16, fontFamily:'SansitaSwashed-Medium'}}>Recovery Rate: %{(iyiOrani*100).toFixed(2)}</Text>
+                <Text style={{color:'#191414',fontSize:16}}>Recovery Rate: %{(iyiOrani*100).toFixed(2)}</Text>
             </View>           
             <Text style={styles.date}>{date.toDateString()}</Text>
 
-           
-                <AdMobBanner
-                    adSize="fullBanner"
-                    adUnitID="ca-app-pub-7956816566156883/3260246717"
-                    
-                    onAdFailedToLoad={error => console.error(error)} />
-           
+            <AdMobBanner
+                    bannerSize="fullBanner"
+                    adUnitID="ca-app-pub-7956816566156883/3260246717" // Test ID, Replace with your-admob-unit-id
+                    servePersonalizedAds // true or false
+                    onDidFailToReceiveAdWithError={this.bannerError} />
 
+            
         </View>
          
         )
@@ -92,21 +97,21 @@ const styles=StyleSheet.create({
         alignItems:'center'
     },
     textCountry:{
-        marginTop:'3%',
+        marginTop:'5%',
         
-        fontSize:22,
+        fontSize:20,
         color:'#3a5aa2',        
         textDecorationLine:'underline',
-        marginBottom:'8%',
+        marginBottom:'5%',
         textAlign:'center',
         borderColor:'#1c3faa' ,
-        fontFamily:'ArchitectsDaughter-Regular'
+        
     },
     imageView:{
         
         width:'90%',
         height:'30%',
-        marginTop:'10%',
+        marginBottom:'5%',
         marginHorizontal:'3%',
         backgroundColor:'#14171A',
         justifyContent:'center'
@@ -127,7 +132,7 @@ const styles=StyleSheet.create({
         alignItems:'center',
         justifyContent:'space-between',
         backgroundColor:'#3A3A3A',   
-        marginVertical:'7%',  
+        marginVertical:'5%',  
         borderRadius:30 ,
         
     },
@@ -136,24 +141,22 @@ const styles=StyleSheet.create({
         color:'#F4B400',
         fontSize:15,
         
-        fontFamily:'SansitaSwashed-Light'
+        
     },
-    covid:{
-        width:128,
-        height:128,
-        position:'absolute'
-    },
+  
+    
     date:{
         
         textAlign:'center',      
         fontSize:22,
         color:'#B4944A',
-        marginVertical:'5%',
+        marginTop:'5%',
         marginHorizontal:'20%',
         borderRadius:10,
         borderWidth:2,
         borderColor:'#3A3A3A',
-        fontFamily:'SansitaSwashed-Light'
+        padding:5
+       
     },
     todayDetail:{
         padding:3,
@@ -167,7 +170,7 @@ const styles=StyleSheet.create({
         fontSize:16,
         textAlign:'center',
         color:'#DB4437',
-        fontFamily:'SansitaSwashed-Regular',
+        
         textDecorationLine:'underline',
     },
     alert:{
@@ -176,6 +179,7 @@ const styles=StyleSheet.create({
         marginHorizontal:'3%'
     },
     olumOran:{
+        marginTop:'5%',
         alignItems:'center',
         marginHorizontal:'25%',
         backgroundColor:'#DB4437',
@@ -188,7 +192,7 @@ const styles=StyleSheet.create({
         backgroundColor:'#0F9D58',
         padding:'1%',
         borderRadius:5,
-        marginTop:'2%'
+        marginTop:'5%'
         
     }
   

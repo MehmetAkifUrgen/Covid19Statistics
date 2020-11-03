@@ -1,4 +1,25 @@
 {
-  "name": "Covid19",
-  "displayName": "Covid19"
+  "expo": {
+    "name": "Covid 19",
+    "slug": "covid-19",
+    "splash": {
+      "image": "./assets/covid.png",
+      "resizeMode": "contain",
+      "backgroundColor": "#ffffff"
+    },
+    "ios": {
+      "bundleIdentifier": "com.urgenakif.covid-19",
+      "config": {
+        
+        "googleMobileAdsAppId": "ca-app-pub-7956816566156883~7701575679" 
+      }
+    },
+    "android": {
+      "package": "com.urgenakif.covid19",
+      "config": {
+        
+        "googleMobileAdsAppId": "ca-app-pub-7956816566156883~7701575679"
+      }
+    }
+  }
 }
