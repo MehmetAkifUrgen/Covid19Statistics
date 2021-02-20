@@ -8,7 +8,7 @@ import {
 
 
 export default class Home extends Component {
-
+  
   state={
     text:'',
     country:[],
@@ -19,6 +19,7 @@ export default class Home extends Component {
     SplashScreen.hideAsync();
     
     this.getCountry();
+    
   }
   componentWillUnmount (){
     this.getCountry();
@@ -70,7 +71,7 @@ export default class Home extends Component {
         <Image resizeMode="stretch"
             loadingIndicatorSource={require('../assets/alert.png')}
             onLoad={this.loading}
-            style={{width:120,height:70, borderRadius:10,borderColor:'grey'}}
+            style={{width:120,height:70,borderRadius:10}}
             source={{uri:`https://flag.muratoner.net/?country=${item.CountryCode}`}}/>
         <View style={styles.textContainer}>
           <Text style={styles.name}>
@@ -105,7 +106,7 @@ export default class Home extends Component {
     return (
       
         <View style={styles.container}>
-            <StatusBar backgroundColor='#14171A' barStyle='light-content' ></StatusBar>
+            <StatusBar backgroundColor='#261298' barStyle='light-content' ></StatusBar>
             
             <View style={styles.searchContainer}>
             
@@ -120,7 +121,7 @@ export default class Home extends Component {
               }}
               value={text}
               placeholder="Search..."
-              placeholderTextColor='white'
+              placeholderTextColor='#9fabfa'
               style={styles.searchInput}
             />
         </View>
@@ -149,7 +150,7 @@ export default class Home extends Component {
 }
 const styles=StyleSheet.create({
   container:{
-    backgroundColor:'#14171A',
+    backgroundColor:'#ffab40',
     flex:1,  
   },
   
@@ -162,7 +163,7 @@ const styles=StyleSheet.create({
     alignItems:'center', 
     
     paddingTop:10,
-    backgroundColor:'#14171A',
+    backgroundColor:'#251298',
       
     
       
@@ -175,8 +176,8 @@ const styles=StyleSheet.create({
   name: {
     textAlign:'center',
     fontSize: 16,
-    color:'#1DA1F2',
-    fontWeight:'500',
+    color:'white',
+    fontWeight:'700',
     
   },
   searchContainer: {
@@ -188,18 +189,18 @@ const styles=StyleSheet.create({
   searchInput: { 
     padding:10,
     fontSize: 16,
-    backgroundColor: '#14171A',
-    color:'white',
+    backgroundColor: '#29170d',
+    color:'#9642f7',
     borderWidth:2,
     borderRadius:10,
-    borderColor:'grey',
+    borderColor:'#46c8fb',
     
   },
   oluOrani:{
     textAlign:'center',
-    fontSize: 15,
-    color:'#F4B400',
-    fontWeight:'500',
+    fontSize: 17,
+    color:'white',
+    fontWeight:'700',
     
   }
 
