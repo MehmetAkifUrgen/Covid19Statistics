@@ -128,7 +128,7 @@ export default class Detail extends Component {
 const styles=StyleSheet.create({
     detailContainer:{
         flex:1,     
-        backgroundColor:'#ffdfb7',     
+        backgroundColor:'#14171A',     
         justifyContent:'center',
         flexDirection:'column',
         alignItems:'center'
